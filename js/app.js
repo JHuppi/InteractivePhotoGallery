@@ -1,9 +1,9 @@
 //Variables for Appended Materials
 var $overlay = $('<div id="overlay"></div>');
-var $prev = $('<button id="prev">&larr;</button>');
+var $prev = $('<div id="prev">&larr;</div>');
 var $image = $('<img>');
 var $caption = $("<p></p>");
-var $next = $('<button id="next">	&rarr;</button>');
+var $next = $('<div id="next">&rarr;</div>');
 
 //Variables for 
 var currentImg;
@@ -53,20 +53,16 @@ var prev = function() {
 
 //Display next image by clicking "next" button
 $('#next').click(function() {
-  if (currentImg.parents("li").next().children("a").children("img").length === 0) {
-  } else {
-    next();
-  }
+  if (currentImg.parents("li").next().children("a").children("img").length !== 0) {
+      next();
+  } 
 });
 
 //Display previous image by clicking "previous" button
 $('#prev').click(function() {
-  if (currentImg.parents("li").prev().children("a").children("img").length === 0) {
-    $prev.css("color", "black");
-  } else {
-    $prev.css("color", "white");
+  if (currentImg.parents("li").prev().children("a").children("img").length !== 0) {
     prev();
-  }
+  } 
 });
 
 //Change image displayed by using right and left arrow keys
@@ -77,8 +73,7 @@ $(window).keyup(function(event) {
     }
     if (event.which === 37 && currentImg.parents("li").prev().children("a").children("img").length !== 0) {
       prev();
-    } else {
-    }
+    } 
   }
 });
 

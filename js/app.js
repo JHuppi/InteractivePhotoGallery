@@ -98,12 +98,18 @@ $("form").submit(function(event) {
 //Search for words included in image captions
 $('#search').keyup(function() {
   $search = $(this).val().toLowerCase();
-  $('#imgGallery img').each(function() {
-    if ($(this).attr("alt").toLowerCase().search($search) < 0) {
-      $(this).css("visibility", "collapse");
-    }
-    else {
-      $(this).css("visibility", "visible");
-    }
-  });
+  if ($search.length === 0) {
+      $('#imgGallery img').each(function(){
+         $(this).parents('li').show(); 
+      });
+  } else {
+    $('#imgGallery img').each(function() {
+        if ($(this).attr("alt").toLowerCase().search($search) < 0) {
+            $(this).parents('li').hide();
+        }
+        else {
+            $(this).parents('li').show();
+        }
+    });
+  }
 });

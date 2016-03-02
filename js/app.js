@@ -1,9 +1,11 @@
 //Variables for Appended Materials
 var $overlay = $('<div id="overlay"></div>');
-var $prev = $('<div id="prev">&larr;</div>');
+var $escape = $('<div id="escape">X</div>');
+var $flex = $('<div id="flex"></div>');
+var $prev = $('<div id="prev">&lsaquo;</div>');
 var $image = $('<img>');
+var $next = $('<div id="next">&rsaquo;</div>');
 var $caption = $("<p></p>");
-var $next = $('<div id="next">&rarr;</div>');
 
 //Variables for 
 var currentImg;
@@ -11,9 +13,11 @@ var imgLocation;
 var imgCaption;
 var overlayVisibility = false;
 
-$overlay.append($prev);
-$overlay.append($image);
-$overlay.append($next);
+$overlay.append($escape);
+$overlay.append($flex);
+$flex.append($prev);
+$flex.append($image);
+$flex.append($next);
 $overlay.append($caption);
 
 $("body").append($overlay);
@@ -80,9 +84,11 @@ $(window).keyup(function(event) {
 //Hide Lightbox
 $image.click(function() {
   $overlay.hide();
-  overlayVisibility = false;
 });
 
+$escape.click(function() {
+   $overlay.hide(); 
+});
 
 //Prevent Form from Submitting
 $("form").submit(function(event) {
